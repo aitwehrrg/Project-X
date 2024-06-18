@@ -5,5 +5,6 @@
 **Contact email:** rrgupta_b23@it.vjti.ac.in
 
 ## Topic
-Text to Speech (TTS) Synthesis
+### Text to Speech (TTS) Synthesis
+**Mentors**: Warren Jacinto, Veeransh Shah
 
