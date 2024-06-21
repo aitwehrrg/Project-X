@@ -19,7 +19,7 @@ class Process:
             for x in range(width):
                 if self._image[y][x] == self._border_value:
                     self._image[y][x] = self._bg_value
-        # cv2.imshow('Border Removed', self._image)
+        # cv2.imshow('Border removed', self._image)
         # cv2.waitKey(0)
 
     # Crops the image to remove the remaining pixels that are not the background
@@ -56,7 +56,7 @@ class Process:
 
         # Remove remnants of the border (salt and pepper noise)
         self._image = cv2.medianBlur(self._image, 3)
-        # cv2.imshow('Median Blur', self._image)
+        # cv2.imshow('Median blur', self._image)
         # cv2.waitKey(0)
 
         self._crop()
@@ -64,7 +64,7 @@ class Process:
         # Remove any pixels that are not the required color
         self._image[self._image > GRAY + self._TOLERANCE] = WHITE
         self._image[self._image < GRAY - self._TOLERANCE] = WHITE
-        # cv2.imshow('Median Blur', self._image)
+        # cv2.imshow('Pixel color filter', self._image)
         # cv2.waitKey(0)
 
         # Convert the image to binary
