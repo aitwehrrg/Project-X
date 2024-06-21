@@ -53,6 +53,7 @@ def vertical_ratios(image: np.ndarray, target: int, start_x: int = 0, start_y: i
 
 
 # Required function
+# Required function
 def output(image: np.ndarray, target: int, suit: str | None = None, value: str | None = None) -> str:
     if suit is None:
         suit_ratios: list[float] = horizontal_ratios(image, BLACK)
@@ -72,7 +73,7 @@ def output(image: np.ndarray, target: int, suit: str | None = None, value: str |
         if suit_min < 1 < suit_max:  # the card is upright and an ace
             suit = SUIT_DICT[suit_ratios.index(suit_max) - 1]  # minus 1 because there are 5 diamonds but only 4 suits
             value = VALUE_DICT[0]  # the card is an ace
-            return f'{suit} of {value}'
+            return output(image, target, suit, value)
 
         # the card is upright and not an ace
         suit = SUIT_DICT[suit_ratios.index(suit_max) - 1]  # minus 1 because there are 5 diamonds but only 4 suits
@@ -82,7 +83,12 @@ def output(image: np.ndarray, target: int, suit: str | None = None, value: str |
         top_x, top_y = sf.StartFinder(image, target).top()
         value_ratios = vertical_ratios(image, target, top_x, top_y)
         value = VALUE_DICT[value_ratios.index(min(value_ratios))]
-    return f'{value} of {suit}'
+
+    output_: str = f'{value} of {suit}'
+    print(output_)
+    cv2.imshow(output_, image)
+    cv2.waitKey(0)
+    return output_
 
 
 def main() -> None:
@@ -95,11 +101,9 @@ def main() -> None:
     for test_case in test_cases:
         image = cv2.imread(test_case, cv2.IMREAD_GRAYSCALE)
         image = pi.Process(image, BLACK, WHITE).process()
-        # cv2.imshow(test_case, image)
-        # cv2.waitKey(0)
         result += f'{output(image, BLACK)}, '
     result += '\b\b'  # remove trailing comma and space; on some terminals it may not work
-    print(result)
+    print(f'Final result: {result}')
 
 
 if __name__ == '__main__':
