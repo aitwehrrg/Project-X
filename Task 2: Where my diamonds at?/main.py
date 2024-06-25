@@ -53,7 +53,6 @@ def vertical_ratios(image: np.ndarray, target: int, start_x: int = 0, start_y: i
 
 
 # Required function
-# Required function
 def output(image: np.ndarray, target: int, suit: str | None = None, value: str | None = None) -> str:
     if suit is None:
         suit_ratios: list[float] = horizontal_ratios(image, BLACK)
