@@ -7,3 +7,6 @@
 ## Topic
 ### SmartMailGuard: AI-Powered Email Classification
 **Mentors**: Druhi Phutane, Raya Chakravarty
+
+**Proposal**: https://drive.google.com/file/d/1LPL8VWcUSV5CNLa01pEuDlvuH77dsGGg/view
+
